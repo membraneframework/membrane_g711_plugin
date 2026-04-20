@@ -17,7 +17,7 @@ The package can be installed by adding `membrane_g711_plugin` to your list of de
 ```elixir
 def deps do
   [
-    {:membrane_g711_plugin, "~> 0.1.1"}
+    {:membrane_g711_plugin, "~> 0.1.2"}
   ]
 end
 ```
