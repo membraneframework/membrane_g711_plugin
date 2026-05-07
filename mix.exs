@@ -1,7 +1,7 @@
 defmodule Membrane.G711.Plugin.Mixfile do
   use Mix.Project
 
-  @version "0.1.1"
+  @version "0.1.2"
   @github_url "https://github.com/jellyfish-dev/membrane_g711_plugin"
 
   def project do
@@ -46,9 +46,9 @@ defmodule Membrane.G711.Plugin.Mixfile do
       {:membrane_raw_audio_parser_plugin, "~> 0.4.0", only: :test},
 
       # Dev deps
-      {:ex_doc, "~> 0.29", only: :dev, runtime: false},
-      {:credo, "~> 1.6", only: :dev, runtime: false},
-      {:dialyxir, "~> 1.1", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.34", only: :dev, runtime: false},
+      {:credo, "~> 1.7", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.4", only: :dev, runtime: false},
 
       # Benchmark deps
       {:benchee, "~> 1.0", only: :benchmark},
@@ -58,11 +58,13 @@ defmodule Membrane.G711.Plugin.Mixfile do
 
   defp dialyzer() do
     opts = [
-      flags: [:error_handling]
+      flags: [:error_handling],
+      plt_add_apps: [:syntax_tools]
     ]
 
     if System.get_env("CI") == "true" do
       # Store PLTs in cacheable directory for CI
+      File.mkdir_p!(Path.join([__DIR__, "priv", "plts"]))
       [plt_local_path: "priv/plts", plt_core_path: "priv/plts"] ++ opts
     else
       opts
