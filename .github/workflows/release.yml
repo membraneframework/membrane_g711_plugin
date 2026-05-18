@@ -19,7 +19,7 @@ jobs:
   run_examples:
     runs-on: ubuntu-latest
     container:
-      image: membraneframeworklabs/docker_membrane:v2.2.0
+      image: membraneframeworklabs/docker_membrane:v2.9.1
       env:
         ASDF_DATA_DIR: /root/.asdf
     steps:
@@ -33,3 +33,7 @@ jobs:
     uses: membraneframework/membrane_actions/.github/workflows/hex-publish.yml@main
     secrets:
       HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
+
+  gh_release:
+    needs: [hex_publish]
+    uses: membraneframework/membrane_actions/.github/workflows/github-release.yml@main
