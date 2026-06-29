@@ -47,7 +47,7 @@ defmodule Membrane.G711.Plugin.Mixfile do
       {:membrane_raw_audio_parser_plugin, "~> 0.4.0", only: :test},
 
       # Dev deps
-      {:ex_doc, "~> 0.40", only: :dev, runtime: false},
+      {:ex_doc, ">= 0.40.0", only: :dev, runtime: false},
       {:credo, ">= 0.0.0", only: :dev, runtime: false},
       {:dialyxir, ">= 0.0.0", only: :dev, runtime: false},
 
