@@ -23,7 +23,7 @@ defmodule Encoding.Pipeline do
           "https://raw.githubusercontent.com/membraneframework/static/gh-pages/samples/beep-s16le-8kHz-mono.raw"
       })
       |> child(:parser, %Membrane.RawAudioParser{
-        stream_format: %Membrane.RawAudio{
+        assumed_input_stream_format: %Membrane.RawAudio{
           sample_format: :s16le,
           sample_rate: 8000,
           channels: 1
